@@ -15,6 +15,14 @@ describe Yomu do
       expect( text ).to include 'The quick brown fox jumped over the lazy cat.'
     end
 
+    it 'reads text with image' do
+      data = File.read 'spec/samples/sample-with-image.docx'
+
+      text = Yomu.read :text, data
+
+      expect( text ).to include 'Quick brown fox jumped over the lazy dog'
+    end
+
     it 'reads metadata' do
       metadata = Yomu.read :metadata, data
 
